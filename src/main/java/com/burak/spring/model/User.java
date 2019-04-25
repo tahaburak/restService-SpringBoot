@@ -1,7 +1,9 @@
 package com.burak.spring.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,20 +25,21 @@ import java.util.Date;
 @Builder
 @Getter
 @Setter
+@JsonRootName(value = "User")
+@JsonPropertyOrder({ "fullName" })
+@JsonIgnoreProperties(value = { "birthDate" }, ignoreUnknown = true)
 public class User {
 	private String name;
 	private String surname;
-
-	@JsonIgnore
 	private Date birthDate;
 
-	@JsonProperty("age")
+	@JsonGetter("age")
 	private int age() {
 		LocalDate birthDateLocalDate = this.birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		return (int) ChronoUnit.YEARS.between(birthDateLocalDate, LocalDate.now());
 	}
 
-	@JsonProperty("fullName")
+	@JsonGetter("fullName")
 	public String fullName() {
 		return this.name + " " + this.surname;
 	}
