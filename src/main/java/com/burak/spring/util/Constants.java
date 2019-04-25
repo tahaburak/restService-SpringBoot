@@ -13,6 +13,9 @@ public class Constants {
 
 	public static final String REQUEST_MAP_VALUE_PING = "/ping";
 	public static final String REQUEST_MAP_VALUE_GREETING = "/greeting";
+	public static final String REQUEST_MAP_VALUE_HIGH_FIVE = "/highFive";
+	public static final String REQUEST_MAP_VALUE_QUOTE = "/quote";
+
 	private static final String REQUEST_MAP_VALUE_USER_BASE = "/user";
 	public static final String REQUEST_MAP_VALUE_GET_DUMMY_USER = REQUEST_MAP_VALUE_USER_BASE + "/dummy";
 	public static final String REQUEST_MAP_VALUE_GENERATE_DUMMY_USER = REQUEST_MAP_VALUE_USER_BASE + "/new";

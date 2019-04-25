@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class UserService implements IUserService {
 
-	private IUserDao userDao;
+	private final IUserDao userDao;
 
 	@Autowired
 	UserService(IUserDao userDao) {
@@ -27,7 +27,7 @@ public class UserService implements IUserService {
 
 	@Override
 	public User generateDummyUser() {
-		return userDao.getDummyUser();
+		return userDao.generateDummyUser();
 	}
 
 	@Override
