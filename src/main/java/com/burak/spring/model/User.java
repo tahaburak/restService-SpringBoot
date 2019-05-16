@@ -2,6 +2,7 @@ package com.burak.spring.model;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
@@ -27,20 +28,27 @@ import java.util.Date;
 @Setter
 @JsonRootName(value = "User")
 @JsonPropertyOrder({ "fullName" })
-@JsonIgnoreProperties(value = { "birthDate" }, ignoreUnknown = true)
+@JsonIgnoreProperties(
+        //   value = {"birthDate"},
+        ignoreUnknown = true)
 public class User {
-	private String name;
-	private String surname;
-	private Date birthDate;
+  private long id;
+  private String name;
+  private String surname;
 
-	@JsonGetter("age")
-	private int age() {
-		LocalDate birthDateLocalDate = this.birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		return (int) ChronoUnit.YEARS.between(birthDateLocalDate, LocalDate.now());
-	}
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  private Date birthDate;
 
-	@JsonGetter("fullName")
-	public String fullName() {
-		return this.name + " " + this.surname;
-	}
+  @JsonGetter("age")
+  private int age() {
+
+    LocalDate birthDateLocalDate =
+            this.birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    return (int) ChronoUnit.YEARS.between(birthDateLocalDate, LocalDate.now());
+  }
+
+  @JsonGetter("fullName")
+  public String fullName() {
+    return this.name + " " + this.surname;
+  }
 }
