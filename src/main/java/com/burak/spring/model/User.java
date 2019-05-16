@@ -2,6 +2,7 @@ package com.burak.spring.model;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 /**
  * Created by TCTAHKOC on 04/24/19
@@ -25,20 +28,27 @@ import java.time.temporal.ChronoUnit;
 @Setter
 @JsonRootName(value = "User")
 @JsonPropertyOrder({ "fullName" })
-@JsonIgnoreProperties(value = { "birthDate" }, ignoreUnknown = true)
+@JsonIgnoreProperties(
+        //   value = {"birthDate"},
+        ignoreUnknown = true)
 public class User {
-	private long id;
-	private String name;
-	private String surname;
-	private LocalDate birthDate;
+  private long id;
+  private String name;
+  private String surname;
 
-	@JsonGetter("age")
-	private int age() {
-		return (int) ChronoUnit.YEARS.between(this.birthDate, LocalDate.now());
-	}
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+  private Date birthDate;
 
-	@JsonGetter("fullName")
-	public String fullName() {
-		return this.name + " " + this.surname;
-	}
+  @JsonGetter("age")
+  private int age() {
+
+    LocalDate birthDateLocalDate =
+            this.birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    return (int) ChronoUnit.YEARS.between(birthDateLocalDate, LocalDate.now());
+  }
+
+  @JsonGetter("fullName")
+  public String fullName() {
+    return this.name + " " + this.surname;
+  }
 }

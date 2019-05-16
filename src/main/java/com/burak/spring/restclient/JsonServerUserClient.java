@@ -21,25 +21,29 @@ import java.util.List;
  */
 @Service
 public class JsonServerUserClient {
-	private RestTemplate restTemplate;
+  private RestTemplate restTemplate;
 
-	public JsonServerUserClient(RestTemplateBuilder restTemplateBuilder) {
-		RestTemplate tmpRestTemplate = restTemplateBuilder.build();
-		List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
-		//Add the Jackson Message converter
-		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		// Note: here we are making this converter to process any kind of response,
-		// not only application/*json, which is the default behaviour
-		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
-		messageConverters.add(converter);
-		tmpRestTemplate.setMessageConverters(messageConverters);
-		this.restTemplate = tmpRestTemplate;
-	}
+  public JsonServerUserClient(RestTemplateBuilder restTemplateBuilder) {
+    RestTemplate tmpRestTemplate = restTemplateBuilder.build();
+    List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
+    // Add the Jackson Message converter
+    MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+    // Note: here we are making this converter to process any kind of response,
+    // not only application/*json, which is the default behaviour
+    converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
+    messageConverters.add(converter);
+    tmpRestTemplate.setMessageConverters(messageConverters);
+    this.restTemplate = tmpRestTemplate;
+  }
 
-	public List<User> getUsers() {
-		ResponseEntity<List<User>> responseEntity = restTemplate.exchange(Constants.JSON_SERVER_USERS, HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<User>>() {
-				});
-		return responseEntity.getBody();
-	}
+  public List<User> getUsers() {
+    ResponseEntity<List<User>> responseEntity =
+            restTemplate.exchange(
+                    Constants.JSON_SERVER_USERS,
+                    HttpMethod.GET,
+                    null,
+                    new ParameterizedTypeReference<List<User>>() {
+                    });
+    return responseEntity.getBody();
+  }
 }
