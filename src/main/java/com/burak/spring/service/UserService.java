@@ -1,10 +1,14 @@
 package com.burak.spring.service;
 
 import com.burak.spring.dao.IUserDao;
+import com.burak.spring.exception.CustomException;
 import com.burak.spring.model.User;
+import com.burak.spring.restclient.JsonServerUserClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,10 +18,12 @@ import java.util.List;
 public class UserService implements IUserService {
 
 	private final IUserDao userDao;
+	private final JsonServerUserClient jsonServerUserClient;
 
 	@Autowired
-	UserService(IUserDao userDao) {
+	UserService(IUserDao userDao, JsonServerUserClient jsonServerUserClient) {
 		this.userDao = userDao;
+		this.jsonServerUserClient = jsonServerUserClient;
 	}
 
 	@Override
@@ -31,8 +37,19 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public List<User> getDummyUserList() {
-		return userDao.getDummyUserList();
+	public List<User> getUsers() {
+		List<User> users = new ArrayList<>();
+		try {
+			users = jsonServerUserClient.getUsers();
+			if (CollectionUtils.isEmpty(users)) {
+				throw new CustomException("");
+			}
+			//		users.stream().filter(user -> )
+		} catch (Exception e) {
+			users = userDao.getDummyUserList();
+		}
+
+		return users;
 	}
 
 	@Override

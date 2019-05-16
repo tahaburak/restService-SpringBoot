@@ -45,7 +45,7 @@ public class UserController {
 	@GetMapping(value = Constants.REQUEST_MAP_VALUE_GET_DUMMY_USER_LIST)
 	@ResponseBody
 	public List<User> getDummyUserList() {
-		return userService.getDummyUserList();
+		return userService.getUsers();
 	}
 
 	@GetMapping(value = Constants.REQUEST_MAP_VALUE_GENERATE_DUMMY_USER_LIST)

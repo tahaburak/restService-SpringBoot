@@ -7,6 +7,8 @@ import com.github.javafaker.Faker;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -40,7 +42,8 @@ public class UserDao implements IUserDao {
 	}
 
 	private User generateDummyUser(Faker faker) {
-		return User.builder().name(faker.name().firstName()).surname(faker.name().lastName()).birthDate(faker.date().birthday()).build();
+		return User.builder().name(faker.name().firstName()).surname(faker.name().lastName())
+				.birthDate(LocalDate.from(faker.date().birthday().toInstant().atZone(ZoneId.systemDefault()))).build();
 	}
 
 	@Override

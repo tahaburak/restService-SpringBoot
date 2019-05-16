@@ -12,9 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
 
 /**
  * Created by TCTAHKOC on 04/24/19
@@ -29,14 +27,14 @@ import java.util.Date;
 @JsonPropertyOrder({ "fullName" })
 @JsonIgnoreProperties(value = { "birthDate" }, ignoreUnknown = true)
 public class User {
+	private long id;
 	private String name;
 	private String surname;
-	private Date birthDate;
+	private LocalDate birthDate;
 
 	@JsonGetter("age")
 	private int age() {
-		LocalDate birthDateLocalDate = this.birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		return (int) ChronoUnit.YEARS.between(birthDateLocalDate, LocalDate.now());
+		return (int) ChronoUnit.YEARS.between(this.birthDate, LocalDate.now());
 	}
 
 	@JsonGetter("fullName")

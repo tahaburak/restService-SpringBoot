@@ -28,4 +28,7 @@ public class Constants {
 
 	public static final Integer DEFAULT_DUMMY_USER_LIST_SIZE = 10;
 
+	public static final String JSON_SERVER_BASE_URL = "http://localhost:3000";
+	public static final String JSON_SERVER_USERS = JSON_SERVER_BASE_URL + "/users";
+
 }

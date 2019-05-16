@@ -12,7 +12,7 @@ public interface IUserService {
 
 	User generateDummyUser();
 
-	List<User> getDummyUserList();
+	List<User> getUsers();
 
 	List<User> generateDummyUsers(int numberOfUsers);
 
