@@ -1,18 +1,18 @@
-package com.burak.spring.service;
+package com.burak.spring.service.impl;
 
 import com.burak.spring.dao.IUserDao;
 import com.burak.spring.exception.CustomException;
 import com.burak.spring.model.User;
 import com.burak.spring.restclient.JsonServerUserClient;
+import com.burak.spring.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by TCTAHKOC on 04/24/19
+ * Created by burak on 04/24/19
  */
 @Service
 public class UserService implements IUserService {
@@ -38,7 +38,7 @@ public class UserService implements IUserService {
 
 	@Override
 	public List<User> getUsers() {
-		List<User> users = new ArrayList<>();
+		List<User> users;
 		try {
 			users = jsonServerUserClient.getUsers();
 			if (CollectionUtils.isEmpty(users)) {

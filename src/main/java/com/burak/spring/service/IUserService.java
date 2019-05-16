@@ -5,7 +5,7 @@ import com.burak.spring.model.User;
 import java.util.List;
 
 /**
- * Created by TCTAHKOC on 04/24/19
+ * Created by burak on 04/24/19
  */
 public interface IUserService {
 	User getDummyUser();
@@ -15,5 +15,4 @@ public interface IUserService {
 	List<User> getUsers();
 
 	List<User> generateDummyUsers(int numberOfUsers);
-
 }

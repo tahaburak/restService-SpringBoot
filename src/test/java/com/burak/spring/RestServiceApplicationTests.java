@@ -13,5 +13,4 @@ public class RestServiceApplicationTests {
 	public void contextLoads() {
 		//
 	}
-
 }

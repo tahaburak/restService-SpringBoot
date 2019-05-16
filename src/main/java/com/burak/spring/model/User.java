@@ -18,7 +18,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 /**
- * Created by TCTAHKOC on 04/24/19
+ * Created by burak on 04/24/19
  */
 @Data
 @AllArgsConstructor
@@ -29,8 +29,8 @@ import java.util.Date;
 @JsonRootName(value = "User")
 @JsonPropertyOrder({ "fullName" })
 @JsonIgnoreProperties(
-        //   value = {"birthDate"},
-        ignoreUnknown = true)
+		//   value = {"birthDate"},
+		ignoreUnknown = true)
 public class User {
   private long id;
   private String name;
@@ -43,7 +43,7 @@ public class User {
   private int age() {
 
     LocalDate birthDateLocalDate =
-            this.birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			this.birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     return (int) ChronoUnit.YEARS.between(birthDateLocalDate, LocalDate.now());
   }
 

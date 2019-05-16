@@ -13,7 +13,7 @@ import java.util.Locale;
 import java.util.Random;
 
 /**
- * Created by TCTAHKOC on 02/27/19
+ * Created by burak on 02/27/19
  */
 @RestController
 @RequestMapping(Constants.CONTROLLER_PREFIX)
@@ -33,7 +33,5 @@ public class GreetingController {
 	@ResponseBody
 	public String quote() {
 		return new Random().nextBoolean() ? faker.howIMetYourMother().quote() : faker.friends().quote();
-
 	}
-
 }

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Created by TCTAHKOC on 03/07/19
+ * Created by burak on 03/07/19
  */
 @Slf4j
 public class CustomStringUtil {

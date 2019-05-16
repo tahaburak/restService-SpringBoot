@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Created by TCTAHKOC on 04/24/19
+ * Created by burak on 04/24/19
  */
 @Component
 public class UserDao implements IUserDao {

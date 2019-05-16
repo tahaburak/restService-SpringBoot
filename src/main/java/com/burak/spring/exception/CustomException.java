@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.io.Serializable;
 
 /**
- * Created by TCTAHKOC on 03/07/19
+ * Created by burak on 03/07/19
  */
 @Getter
 @Setter

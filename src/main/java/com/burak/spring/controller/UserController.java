@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Created by TCTAHKOC on 04/24/19
+ * Created by burak on 04/24/19
  */
 @RestController
 @RequestMapping(Constants.CONTROLLER_PREFIX)
@@ -53,6 +53,4 @@ public class UserController {
 	public List<User> generateDummyUserList(@PathVariable int number) {
 		return userService.generateDummyUsers(number);
 	}
-
 }
-

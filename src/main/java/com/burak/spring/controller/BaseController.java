@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by TCTAHKOC on 02/27/19
+ * Created by burak on 02/27/19
  */
 @RestController
 @RequestMapping(Constants.CONTROLLER_PREFIX)
