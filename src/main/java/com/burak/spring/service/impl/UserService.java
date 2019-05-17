@@ -11,49 +11,47 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
-/**
- * Created by burak on 04/24/19
- */
+/** Created by burak on 04/24/19 */
 @Service
 public class UserService implements IUserService {
 
-	private final IUserDao userDao;
-	private final JsonServerUserClient jsonServerUserClient;
+  private final IUserDao userDao;
+  private final JsonServerUserClient jsonServerUserClient;
 
-	@Autowired
-	UserService(IUserDao userDao, JsonServerUserClient jsonServerUserClient) {
-		this.userDao = userDao;
-		this.jsonServerUserClient = jsonServerUserClient;
-	}
+  @Autowired
+  UserService(IUserDao userDao, JsonServerUserClient jsonServerUserClient) {
+    this.userDao = userDao;
+    this.jsonServerUserClient = jsonServerUserClient;
+  }
 
-	@Override
-	public User getDummyUser() {
-		return userDao.getDummyUser();
-	}
+  @Override
+  public User getDummyUser() {
+    return userDao.getDummyUser();
+  }
 
-	@Override
-	public User generateDummyUser() {
-		return userDao.generateDummyUser();
-	}
+  @Override
+  public User generateDummyUser() {
+    return userDao.generateDummyUser();
+  }
 
-	@Override
-	public List<User> getUsers() {
-		List<User> users;
-		try {
-			users = jsonServerUserClient.getUsers();
-			if (CollectionUtils.isEmpty(users)) {
-				throw new CustomException("");
-			}
-			//		users.stream().filter(user -> )
-		} catch (Exception e) {
-			users = userDao.getDummyUserList();
-		}
+  @Override
+  public List<User> getUsers() {
+    List<User> users;
+    try {
+      users = jsonServerUserClient.getUsers();
+      if (CollectionUtils.isEmpty(users)) {
+        throw new CustomException("");
+      }
+      //		users.stream().filter(user -> )
+    } catch (Exception e) {
+      users = userDao.getDummyUserList();
+    }
 
-		return users;
-	}
+    return users;
+  }
 
-	@Override
-	public List<User> generateDummyUsers(int numberOfUsers) {
-		return userDao.generateDummyUsers(numberOfUsers);
-	}
+  @Override
+  public List<User> generateDummyUsers(int numberOfUsers) {
+    return userDao.generateDummyUsers(numberOfUsers);
+  }
 }
