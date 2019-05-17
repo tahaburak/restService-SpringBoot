@@ -4,16 +4,14 @@ import com.burak.spring.model.User;
 
 import java.util.List;
 
-/**
- * Created by TCTAHKOC on 04/24/19
- */
+/** Created by burak on 04/24/19 */
 public interface IUserDao {
 
-	User generateDummyUser();
+  User generateDummyUser();
 
-	User getDummyUser();
+  User getDummyUser();
 
-	List<User> getDummyUserList();
+  List<User> getDummyUserList();
 
-	List<User> generateDummyUsers(int numberOfUsers);
+  List<User> generateDummyUsers(int numberOfUsers);
 }
