@@ -16,9 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by TCTAHKOC on 05/16/19
- */
+/** Created by burak on 05/16/19 */
 @Service
 public class JsonServerUserClient {
   private RestTemplate restTemplate;
@@ -38,12 +36,11 @@ public class JsonServerUserClient {
 
   public List<User> getUsers() {
     ResponseEntity<List<User>> responseEntity =
-            restTemplate.exchange(
-                    Constants.JSON_SERVER_USERS,
-                    HttpMethod.GET,
-                    null,
-                    new ParameterizedTypeReference<List<User>>() {
-                    });
+        restTemplate.exchange(
+            Constants.JSON_SERVER_USERS,
+            HttpMethod.GET,
+            null,
+            new ParameterizedTypeReference<List<User>>() {});
     return responseEntity.getBody();
   }
 }

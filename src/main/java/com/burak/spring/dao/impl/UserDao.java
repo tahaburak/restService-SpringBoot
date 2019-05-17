@@ -11,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by TCTAHKOC on 04/24/19
- */
+/** Created by burak on 04/24/19 */
 @Component
 public class UserDao implements IUserDao {
 
@@ -40,10 +38,10 @@ public class UserDao implements IUserDao {
 
   private User generateDummyUser(Faker faker) {
     return User.builder()
-            .name(faker.name().firstName())
-            .surname(faker.name().lastName())
-            .birthDate(faker.date().birthday())
-            .build();
+        .name(faker.name().firstName())
+        .surname(faker.name().lastName())
+        .birthDate(faker.date().birthday())
+        .build();
   }
 
   @Override
