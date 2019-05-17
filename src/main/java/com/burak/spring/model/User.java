@@ -30,6 +30,7 @@ import java.util.Date;
     //   value = {"birthDate"},
     ignoreUnknown = true)
 public class User {
+  @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private long id;
   private String name;
   private String surname;

@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "e9376fe2-4098-45c9-8cf5-d62651630294",
+    "_postman_id": "33cc6ec3-2814-4797-8450-f0e5fcad0270",
     "name": "Burak RestService",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
@@ -129,7 +129,7 @@
     {
       "name": "h2 refresh users table",
       "request": {
-        "method": "GET",
+        "method": "POST",
         "header": [],
         "url": {
           "raw": "{{baseURL}}/{{h2Service}}/{{endPointRefreshUsers}}",

@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 /** Created by burak on 2019-05-17 */
 @RestController
 @RequestMapping(Constants.CONTROLLER_PREFIX)
-@Api(value = Constants.CONTROLLER_API_VALUE_USER)
+@Api(value = Constants.CONTROLLER_API_VALUE_H2)
 @Slf4j
 public class H2Controller {
   private final IH2Service ih2Service;
@@ -42,7 +43,7 @@ public class H2Controller {
     ih2Service.insertUsersTable(number);
   }
 
-  @GetMapping(value = Constants.REQUEST_MAP_VALUE_REFRESH_USERS_TABLE)
+  @PostMapping(value = Constants.REQUEST_MAP_VALUE_REFRESH_USERS_TABLE)
   @ResponseBody
   public void refreshUsersTable() {
     ih2Service.dropUsersTable();

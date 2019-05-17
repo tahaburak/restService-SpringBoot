@@ -12,15 +12,14 @@ public class Constants {
   public static final String REQUEST_MAP_VALUE_HIGH_FIVE = "/highFive";
   public static final String REQUEST_MAP_VALUE_QUOTE = "/quote";
 
-  private static final String REQUEST_MAP_VALUE_USER_BASE = "/user";
+  public static final String REQUEST_MAP_VALUE_USERS_BASE = "/users";
   public static final String REQUEST_MAP_VALUE_GET_DUMMY_USER =
-      REQUEST_MAP_VALUE_USER_BASE + "/dummy";
+          REQUEST_MAP_VALUE_USERS_BASE + "/dummy";
   public static final String REQUEST_MAP_VALUE_GENERATE_DUMMY_USER =
-      REQUEST_MAP_VALUE_USER_BASE + "/new";
-  public static final String REQUEST_MAP_VALUE_GET_DUMMY_USER_LIST =
-      REQUEST_MAP_VALUE_USER_BASE + "/dummyList";
+          REQUEST_MAP_VALUE_USERS_BASE + "/new";
+
   public static final String REQUEST_MAP_VALUE_GENERATE_DUMMY_USER_LIST =
-      REQUEST_MAP_VALUE_USER_BASE + "/newList/{number}";
+          REQUEST_MAP_VALUE_USERS_BASE + "/newList/{number}";
 
   private static final String REQUEST_MAP_VALUE_H2_BASE = "/h2";
   public static final String REQUEST_MAP_VALUE_CREATE_USERS_TABLE =
